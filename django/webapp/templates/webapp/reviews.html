@@ -1,0 +1,25 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy{% endblock %}
+
+{% block body_block %}
+
+<table class="table-condensed">
+<tr>
+    <td><b>Author</b></td>
+    <td><b>Rating</b></td>
+    <td><b>Description</b></td>
+    <td><b>Class</b></td>
+    <td><b>Session Description</b></td>
+</tr>
+{% for review in review_list %}
+<tr>
+    <td>{{ review.author }}</td>
+    <td>{{ review.rating }}</td>
+    <td>{{ review.text }}</td>
+    <td>{{ review.study_session.parent_class }}</td>
+    <td>{{ review.study_session.description }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

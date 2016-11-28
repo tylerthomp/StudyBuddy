@@ -1,0 +1,51 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy - Review Your Sessions{% endblock %}
+
+{% block nav_review %}<strong>Review Your Sessions</strong>{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="jRating.jquery.css" media="screen" />
+<script type="text/javascript" src="jRating.jquery.js"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+      $(".rating").jRating();
+});
+</script>
+
+{% block body_block %}
+    <table class="table-condensed">
+        <tr>
+            <td><b>Class</b></td>
+            <td><b>Date</b></td>
+            <td><b>Creator</b></td>
+            <td><b>Description</b></td>
+            <td><b>Rating 1-5</b></td>
+            <td><b>Feedback</b></td>
+        </tr>
+        {% for att in past_attendances %}
+        {% if att.rsvp_status == 1 %}
+        <form method="post" action="{% url 'review_sessions' %}">
+        {% csrf_token %}
+        <tr>
+            <td>{{att.study_session.parent_class}}</td>
+            <td>{{att.study_session.start_time}}</td>
+            <td>{{att.study_session.author}}</td>
+            <td>{{att.study_session.description}}</td>
+            <td>
+                <div style="width: 120px">
+                <input class="radio-inline" type="radio" name="rating" value="1"/>
+                <input class="radio-inline" type="radio" name="rating" value="2"/>
+                <input class="radio-inline" type="radio" name="rating" value="3"/>
+                <input class="radio-inline" type="radio" name="rating" value="4"/>
+                <input class="radio-inline" type="radio" name="rating" value="5"/>
+                </div>
+            </td>
+            <td><input type="text" name="text" id="text" value="Optional Description"/></td>
+            <td><input class="btn" type="submit" value="Review"/></td>
+            <td><input type="text" name="attendance_id" id="attendance_id" value="{{ att.id }}" style="visibility: hidden;width:0px;"/></td>
+        </tr>
+        </form>
+        {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

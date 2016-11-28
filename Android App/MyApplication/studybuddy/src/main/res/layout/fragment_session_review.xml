@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RatingBar
+        android:id="@+id/session_review_ratings_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+    <EditText
+        android:id="@+id/session_review_comments"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:gravity="start"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/session_review_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:layout_gravity="right"
+        android:text="Submit"/>
+</LinearLayout>

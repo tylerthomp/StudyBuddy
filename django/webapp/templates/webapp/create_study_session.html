@@ -1,0 +1,71 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy - Create Session{% endblock %}
+
+{% block nav_create %}<strong>Create a Session</strong>{% endblock %}
+
+{% block body_block %}
+
+<script>
+$(function() {
+    $( "#start_day" ).datepicker();
+});
+</script>
+<script>
+$(function() {
+    $( "#end_day" ).datepicker();
+});
+</script>
+
+<div class="content" data-role="none" data-enhancement="False">
+    {% if message %}<b>{{ message }}</b>{% endif %}
+
+    <form method="post" action="{% url 'create_study_session' %}" id="create_form">
+        {% csrf_token %}
+        <table class="table-condensed">
+            <tr>
+                <td>Class Prefix</td>
+                <td><input type="text" name="class_prefix" id="class_prefix" required="true"></td>
+            </tr>
+            <tr>
+                <td>Class Number</td>
+                <td><input type="text" name="class_number" id="class_number" required="true"></td>
+            </tr>
+            <tr>
+                <td>Start Day</td>
+                <td><input type="text" name="start_day" id="start_day" required="true"></td>
+            </tr>
+            <tr>
+                <td>Start Time</td>
+                <td><input type="text"  name="start_time" id="start_time" required="true"></td>
+            </tr>
+            <tr>
+                <td>End Day</td>
+                <td><input type="text" name="end_day" id="end_day" required="true"></td>
+            </tr>
+            <tr>
+                <td>End Time</td>
+                <td><input type="text" name="end_time" id="end_time" required="true"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" name="description" id="description" required="true"></td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td><input type="text" name="location" id="location" required="true"></td>
+            </tr>
+            <tr>
+                <td>Latitude</td>
+                <td><input type="text" name="latitude" id="latitude"></td>
+            </tr>
+            <tr>
+                <td>Longitude</td>
+                <td><input type="text" name="longitude" id="longitude"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Create Session" id="create_session"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

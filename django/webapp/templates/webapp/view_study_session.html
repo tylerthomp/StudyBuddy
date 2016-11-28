@@ -1,0 +1,97 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy - View Sessions{% endblock %}
+
+{% block nav_home %}<strong>Home</strong>{% endblock %}
+
+{% block body_block %}
+
+<style>
+    {% for att in attendances %}
+    {% if att.study_session.rsvp_status != 2 and att.study_session.latitude and att.study_session.longitude %}
+    #map-canvas-{{att.study_session.id}} {
+        width: 150px;
+        height: 150px;
+    }
+    {% endif %}
+    {% endfor %}
+</style>
+
+<body>
+	<div class="content" data-role="none" data-enhancement="False">
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+		<table class="table-hover">
+			<tr>
+                <td><b>Class Name</b></td>
+                <td><b>Start Time</b></td>
+                <td><b>End Time</b></td>
+                <td><b>Description</b></td>
+                <td><b>Location</b></td>
+                <td><b>Map</b></td>
+                <td><b>RSVP</b></td>
+			</tr>
+			{% for attendance in attendances %}
+            {% if attendance.rsvp_status == 1 %}
+			<tr>
+				<td>{{attendance.study_session.parent_class}}</td>
+				<td>{{attendance.study_session.start_time}}</td>
+				<td>{{attendance.study_session.end_time}}</td>
+				<td>{{attendance.study_session.description}}</td>
+				<td>{{attendance.study_session.location}}</td>
+                <td><div id="map-canvas-{{attendance.study_session.id}}"></div></td>
+                <td>
+                    <form method="post" action="{% url 'index' %}" id="{{ attendance.id }}">
+                        {% csrf_token %}
+                        <button class="btn" name="decline" type="submit" value="{{ attendance.id }}">Decline</button>
+                    </form>
+                </td>
+			</tr>
+            {% endif %}
+			{% endfor %}
+            {% for attendance in attendances %}
+            {% if attendance.rsvp_status != 1 %}
+			<tr>
+				<td>{{attendance.study_session.parent_class}}</td>
+				<td>{{attendance.study_session.start_time}}</td>
+				<td>{{attendance.study_session.end_time}}</td>
+				<td>{{attendance.study_session.description}}</td>
+				<td>{{attendance.study_session.location}}</td>
+                <td><div id="map-canvas-{{attendance.study_session.id}}"></div></td>
+                <td>
+                    <form method="post" action="{% url 'index' %}" id="{{ attendance.id }}">
+                        {% csrf_token %}
+                        {% if attendance.rsvp_status == 0 or attendance.rsvp_status == 2 %}
+                        <button class="btn" name="accept" type="submit" value="{{ attendance.id }}">Accept</button>
+                        {% else %}
+                        <button class="btn" name="decline" type="submit" value="{{ attendance.id }}">Decline</button>
+                        {% endif %}
+                    </form>
+                </td>
+			</tr>
+            {% endif %}
+			{% endfor %}
+		</table>
+		<br>
+
+</div>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript">
+    function initialize() {
+        {% for att in attendances %}
+        {% if att.rsvp_status != 2 and att.study_session.longitude and att.study_session.latitude %}
+        var mapCanvas_{{att.study_session.id}} = document.getElementById('map-canvas-{{att.study_session.id}}');
+        var mapOptions_{{att.study_session.id}} = {
+            center: new google.maps.LatLng({{att.study_session.latitude}}, {{att.study_session.longitude}}),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map_{{att.study_session.id}} = new google.maps.Map(mapCanvas_{{att.study_session.id}}, mapOptions_{{att.study_session.id}})
+        {% endif %}
+        {% endfor %}
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+{% endblock %}
+

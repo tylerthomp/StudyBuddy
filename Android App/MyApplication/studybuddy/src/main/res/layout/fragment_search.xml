@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/search_text_view_class_prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Prefix:"
+            android:textColor="@color/study_buddy_primary"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/search_text_view_class_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Number:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentRight="true"/>
+
+        <Spinner
+            android:id="@+id/search_class_prefix_spinner"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/search_text_view_class_prefix"/>
+
+        <EditText
+            android:id="@+id/search_edit_text_class_number"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/search_text_view_class_code"
+            android:layout_alignBottom="@+id/search_class_prefix_spinner"
+            android:textColor="#808080"
+            android:inputType="number"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/search_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"/>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy - See My Reviews{% endblock %}
+
+{% block nav_my_reviews %}<strong>See My Sessions</strong>{% endblock %}
+
+{% block body_block %}
+
+<table class="table-condensed">
+    <tr>
+        <td><b>Class Name</b></td>
+        <td><b>Start Time</b></td>
+        <td><b>End Time</b></td>
+        <td><b>Description</b></td>
+        <td><b>Location</b></td>
+        <td><b>Reviews</b></td>
+    </tr>
+    {% for ss in my_ss_list %}
+    <tr>
+        <td>{{ ss.parent_class }}</td>
+        <td>{{ ss.start_time }}</td>
+        <td>{{ ss.end_time }}</td>
+        <td>{{ ss.description }}</td>
+        <td>{{ ss.location }}</td>
+        <td><a href="/webapp/{{ss.id}}/reviews">See Reviews</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array
+        name="nav_drawer_items_array">
+        <item>Home</item>
+        <item>Review Session</item>
+        <item>Search</item>
+        <item>Me</item>
+        </string-array>
+
+</resources>

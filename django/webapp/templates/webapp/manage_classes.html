@@ -1,0 +1,43 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy - Manage Classes{% endblock %}
+
+{% block nav_classes %}<strong>Manage Your Classes</strong>{% endblock %}
+
+{% block body_block %}
+
+{% if message %}<strong> {{ message }} </strong>{% endif %}
+
+<table class="table-condensed">
+    {% for stc in classes %}
+    <tr>
+        <td>
+            <strong>Class:</strong> {{ stc.course.prefix }} {{ stc.course.number }}
+        </td>
+        <td>
+            <form method="post" action="{% url 'manage_classes' %}" id="{{ stc.id }}">
+                {% csrf_token %}
+                <button class="btn" name="remove" type="submit" value="{{ stc.id }}">Remove</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<form method="post" action="{% url 'manage_classes' %}">
+    {% csrf_token %}
+    <table class="table-condensed">
+        <tr>
+            <td>Class Prefix</td>
+            <td><input type="text" name="class_prefix" id="class_prefix" required="true"></td>
+        </tr>
+        <tr>
+            <td>Class Number</td>
+            <td><input type="text" name="class_number" id="class_number" required="true"></td>
+        </tr>
+        <tr>
+            <td>Are you a TA for this class?</td>
+            <td><input class="checkbox-inline" type="checkbox" name="is_ta" id="is_ta"></td>
+        </tr>
+    </table>
+    <input class="btn" name="add" type="submit" value="Add Class">
+</form>
+{% endblock %}

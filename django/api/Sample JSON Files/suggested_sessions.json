@@ -1,0 +1,21 @@
+{
+   "id":29,
+   "has_review":false,
+   "study_session":{
+      "parent_class":{
+         "class_number":309,
+         "class_prefix":"COMS"
+      },
+      "id":27,
+      "end_time":"2015-05-30T12:35:00+00:00",
+      "author":"admin",
+      "latitude":null,
+      "start_time":"2015-05-30T12:33:00+00:00",
+      "is_ta":false,
+      "location":"LOCATION D",
+      "longitude":null,
+      "description":"SESSION D"
+   },
+   "user":"45ce6aab96ba40faa9fcdae85109ff",
+   "rsvp_status":0
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="study_buddy_primary">#6699FF</color>
+    <color name="study_buddy_affirmative_green">#548364</color>
+    <color name="study_buddy_negative_red">#A31919</color>
+</resources>

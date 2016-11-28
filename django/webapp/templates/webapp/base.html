@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{% block title %}Study Buddy{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "style.css" %}"/>
+</head>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<body>
+<div class="wrapper">
+    <div class="nav">
+        <ul class="nav">
+            <li class="nav-tabs">{% block nav_home %}<a href="/webapp/">Home</a>{% endblock %}</li>
+            <li class="nav-tabs">{% block nav_create %}<a href="/webapp/create/">Create a Session</a>{% endblock %}</li>
+            <li class="nav-tabs">{% block nav_classes %}<a href="/webapp/classes">Manage My Classes</a>{% endblock %}</li>
+            <li class="nav-tabs">{% block nav_avail %}<a href="/webapp/availabilities">Manage Availabilities</a>{% endblock %}</li>
+            <li class="nav-tabs">{% block nav_review %}<a href="/webapp/review">Review My Sessions</a>{% endblock %}</li>
+            <li class="nav-tabs">{% block nav_my_reviews %}<a href="/webapp/children">See My Sessions</a>{% endblock %}</li>
+            <li class="nav-tabs">{% block nav_search %}<a href="/webapp/search">Search</a>{% endblock %}</li>
+        </ul>
+    </div>
+    <div>
+        {% block body_block %}Default Content
+        {% endblock %}
+    </div>
+</div>
+</body>
+</html>

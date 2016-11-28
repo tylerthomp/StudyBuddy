@@ -1,0 +1,57 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy - Manage Availabilities{% endblock %}
+
+{% block nav_avail %}<strong>Manage Availabilities</strong>{% endblock %}
+
+{% block body_block %}
+
+{% if message %}<strong> {{ message }} </strong>{% endif %}
+{% if error_message %}<strong> {{ error_message }} </strong>{% endif %}
+
+<strong>Current Availabilities</strong>
+<table class="table-hover">
+{% for avail in availabilities %}
+    <tr>
+        <form method="post" action="{% url 'manage_availabilities' %}">
+            {% csrf_token %}
+            <input type="hidden" name="availability_id" value="{{ avail.id }}">
+            <td>
+                Day: <input type="text" name="day" id="day_{{ avail.id }}" value="{{avail.get_day_display}}">
+            </td>
+            <td>
+                Start: <input type="text" name="start_time" id="end_time{{ avail.id }}" value="{{avail.start}}">
+            </td>
+            <td>
+                End: <input type="text" name="end_time" id="end_time{{ avail.id }}" value="{{avail.end}}">
+            </td>
+            <td>
+                <input class="btn" type="submit" value="Delete" name="delete">
+            </td>
+        </form>
+    <tr>
+{% endfor %}
+</table>
+
+<br>
+<strong>Add new availability</strong>
+<form method="post" action="{% url 'manage_availabilities' %}">
+    {% csrf_token %}
+    <table class="table-condensed">
+        <tr>
+            <input type="hidden" name="availability_id" value="{{ avail.id }}" required="true">
+            <td>
+                Day: <input type="text" name="day" value="{{avail.day}}" required="true">
+            </td>
+            <td>
+                Start: <input type="text" name="start_time" value="{{avail.start}}" required="true">
+            </td>
+            <td>
+                End: <input type="text" name="end_time" value="{{avail.end}}" required="true">
+            </td>
+            <td>
+                <input class="btn" type="submit" value="Add" name="add">
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

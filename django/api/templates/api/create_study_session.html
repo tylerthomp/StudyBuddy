@@ -1,0 +1,96 @@
+<html>
+<head>
+</head>
+<body>
+	<div data-role="header">
+		<h1>Simple StudySession creator</h1>
+	</div>
+
+    <div id="response">
+        <pre></pre>
+    </div>
+
+	<div data-role="main" class="ui-content">
+        <form id="myform">
+			{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+			{% csrf_token %}
+
+			<label for="class_prefix">class_prefix</label>
+			<input type="text" name="class_prefix" id="class_prefix" placeholder="class_prefix">
+
+			<label for="class_number">class_number</label>
+			<input type="text" name="class_number" id="class_number" placeholder="class_number">
+
+            <br>
+
+			<label for="description">description</label>
+			<input type="text" name="description" id="description" placeholder="description">
+
+            <br>
+            
+			<label for="start_time">start_time</label>
+			<input type="text" name="start_time" id="start_time" placeholder="2015-02-31T16:20:00">
+
+            <br>
+
+			<label for="end_time">end_time</label>
+			<input type="text" name="end_time" id="end_time" placeholder="2015-02-31T17:20:00">
+
+            <br>
+
+			<label for="location">location</label>
+			<input type="text" name="location" id="location" placeholder="location">
+
+            <br>
+
+			<label for="latitude">latitude</label>
+			<input type="text" name="latitude" id="latitude" placeholder="latitude">
+
+            <br>
+
+			<label for="longitude">longitude</label>
+			<input type="text" name="longitude" id="longitude" placeholder="longitude">
+
+            <br>
+            <button type="submit">SUBMIT</button>
+        </form>
+
+	</div>
+
+	<div data-role="footer" data-inline="true">
+	</div>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    (function($) {
+        function processForm( e ){
+            var class_prefix_payload = document.getElementById("class_prefix").value;
+            var class_number_payload = document.getElementById("class_number").value;
+            var payload = {
+                    class: { class_prefix: class_prefix_payload, class_number: class_number_payload },
+                    description : document.getElementById("description").value,
+                    location    : document.getElementById("location").value,
+                    latitude    : document.getElementById("latitude").value,
+                    longitude   : document.getElementById("longitude").value,
+                    start_time  : document.getElementById("start_time").value,
+                    end_time    : document.getElementById("end_time").value
+                };
+            $.ajax({
+                url:  "http://williamnorton.me:8000/api/StudySession/create",
+                dataType: "json",
+                type: "post",
+                contentType: 'application/json',
+                data: JSON.stringify(payload)
+            });
+
+            e.preventDefault();
+
+        }
+
+        $('#myform').submit( processForm );
+    })(jQuery);
+
+</script>
+</body>
+</html>

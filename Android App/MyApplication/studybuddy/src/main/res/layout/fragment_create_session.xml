@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/create_session_container_card"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        card_view:cardCornerRadius="@dimen/card_view_corner_radius">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/create_session_text_view_class_prefix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class Prefix:"
+                    android:textColor="@color/study_buddy_primary"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:id="@+id/create_session_text_view_class_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class Number:"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_alignParentRight="true"/>
+
+                <Spinner
+                    android:id="@+id/create_session_class_prefix_spinner"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/create_session_text_view_class_prefix"/>
+
+                <EditText
+                    android:id="@+id/create_session_edit_text_class_number"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/create_session_text_view_class_code"
+                    android:layout_alignBottom="@+id/create_session_class_prefix_spinner"
+                    android:textColor="#808080"
+                    android:inputType="number"/>
+
+
+                </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:id="@+id/create_session_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Title:"/>
+
+            <EditText
+                android:id="@+id/create_session_title_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/create_session_text_view_class_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class Name:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+
+            <EditText
+                android:id="@+id/create_session_edit_text_class_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                />android:textColor="#808080"
+
+            <TextView
+                android:id="@+id/create_session_text_view_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Start Date"/>
+
+            <TextView
+                android:id="@+id/create_session_start_date_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#808080"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"/>
+
+            <TextView
+                android:id="@+id/create_session_text_view_start_time_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Start Time"/>
+
+            <TextView
+                android:id="@+id/timePicker1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#808080"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"/>
+
+            <TextView
+                android:id="@+id/create_session_text_view_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="End Date"/>
+
+            <TextView
+                android:id="@+id/create_session_end_date_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#808080"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"/>
+
+            <TextView
+                android:id="@+id/create_session_text_view_end_time_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="End Time"/>
+
+            <TextView
+                android:id="@+id/timePicker2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#808080"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"/>
+
+            <TextView
+                android:id="@+id/create_session_text_view_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location:"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <EditText
+                android:id="@+id/create_session_edit_text_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/create_session_text_view_map_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose GPS Location:"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <ImageView
+                android:id="@+id/create_session_text_view_map_location_get_map"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+
+            <TextView
+                android:id="@+id/create_session_text_view_max_attendees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Maximum Studiers:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+
+            <EditText
+                android:id="@+id/create_session_edit_text_max_attendees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:inputType="number"/>
+
+            <Button
+                android:id="@+id/create_session_submit"
+                android:text="submit"
+                android:layout_width="180dp"
+                android:layout_height="75dp"
+                android:layout_gravity="right"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    </ScrollView>
+</LinearLayout>

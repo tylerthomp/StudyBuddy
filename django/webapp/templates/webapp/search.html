@@ -1,0 +1,54 @@
+{% extends 'webapp/base.html' %}
+{% block title %}Study Buddy - Search for Study Sessions{% endblock %}
+
+{% block nav_search %}<b>Search</b>{% endblock %}
+
+
+{% block body_block %}
+{% if message %}<b> {{ message }} </b>{% endif %}
+<form method="post" action="{% url 'search' %}" id="search_form">
+    {% csrf_token %}
+    <table class="table-condensed">
+        <tr>
+            <td>Class Prefix (COMS, MATH, etc)</td>
+            <td><input type="text" id="class_prefix" name="class_prefix"/></td>
+        </tr>
+        <tr>
+            <td>Class Number (227, 101, etc)</td>
+            <td><input type="text" id="class_number" name="class_number"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" id="search_sessions" value="Search"/></td>
+        </tr>
+    </table>
+</form>
+{% if message == "" %}
+<hr/>
+<table class="table-condensed">
+    <tr>
+        <td><b>Class Name</b></td>
+        <td><b>Start Time</b></td>
+        <td><b>End Time</b></td>
+        <td><b>Description</b></td>
+        <td><b>Location</b></td>
+        <td><b>RSVP</b></td>
+    </tr>
+    {% for session in search_results %}
+        <tr>
+            <td>{{ session.parent_class }}</td>
+            <td>{{ session.start_time }}</td>
+            <td>{{ session.end_time }}</td>
+            <td>{{ session.description }}</td>
+            <td>{{ session.location }}</td>
+            <td>
+                <form method="post" action="{% url 'search' %}" id="{{ session.id }}">
+                    {% csrf_token %}
+                    <input type="hidden" name="rsvp" value="{{ session.id }}">
+                    <button class="btn" name="accept" type="submit" value="{{ session.id }}">Accept</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

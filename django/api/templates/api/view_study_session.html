@@ -1,0 +1,47 @@
+<html>
+<head>
+	<style>
+		table,tr,td,th{
+			border:1px solid black;
+			width:900px;
+			border-collapse: collapse;
+			page-break-inside: avoid;
+			}
+
+	</style>
+
+</head>
+<body>
+	<div class="content" data-role="none" data-enhancement="False">
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+		<table>
+			<tr>
+                <td>class_name</td>
+                <td>start_time</td>
+                <td>end_time</td>
+                <td>description</td>
+                <td>location</td>
+                <td>latitude</td>
+                <td>longitude</td>
+                <td>author</td>
+			</tr>
+			{% for entry in study_sessions %}
+			<tr>
+				<td>{{entry.class_name}}</td>
+				<td>{{entry.start_time}}</td>
+				<td>{{entry.end_time}}</td>
+				<td>{{entry.description}}</td>
+				<td>{{entry.location}}</td>
+				<td>{{entry.latitude}}</td>
+				<td>{{entry.longitude}}</td>
+				<td>{{entry.author}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<br>
+
+</div>
+</body>
+</html>
+

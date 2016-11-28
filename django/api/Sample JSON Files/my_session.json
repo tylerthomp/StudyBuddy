@@ -1,0 +1,15 @@
+{
+   "parent_class":{
+      "class_number":456,
+      "class_prefix":"COMS"
+   },
+   "id":8,
+   "end_time":"2015-07-20T17:20:00+00:00",
+   "author":"45ce6aab96ba40faa9fcdae85109ff",
+   "latitude":null,
+   "start_time":"2015-07-20T16:20:00+00:00",
+   "is_ta":false,
+   "location":"I ",
+   "longitude":null,
+   "description":"Hehe "
+}
